@@ -8,7 +8,7 @@ install_java() {
     echo "Installing default Java (OpenJDK)..."
 
     # Install default JDK (Ubuntu)
-    sudo apt update
+    sudo apt update && sudo apt update -y
     sudo apt install -y default-jdk
 
     # Verify Java installation
@@ -25,14 +25,13 @@ install_java() {
     echo "Java installation complete."
 }
 
-
 install_tomcat() {
-    echo "Installing Tomcat 10.1.36..."
+    echo "Installing Tomcat 11.0.5..."
 
     # Set Tomcat version and paths
-    TOMCAT_VERSION="10.1.36"
+    TOMCAT_VERSION="11.0.5"
     TOMCAT_TAR="apache-tomcat-${TOMCAT_VERSION}.tar.gz"
-    TOMCAT_URL="https://dlcdn.apache.org/tomcat/tomcat-10/v${TOMCAT_VERSION}/bin/${TOMCAT_TAR}"
+    TOMCAT_URL="https://dlcdn.apache.org/tomcat/tomcat-11/v${TOMCAT_VERSION}/bin/${TOMCAT_TAR}"
     TOMCAT_DIR="/usr/local/tomcat"
 
     # Download Tomcat
@@ -61,7 +60,6 @@ install_tomcat() {
         exit 1
     fi
 }
-
 
 # Function to create a systemd service file for Tomcat
 setup_tomcat_service() {
